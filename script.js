@@ -1,25 +1,42 @@
 var squares = [];
+var squareCss = {};
+var ScreenWidth = $('body').width;
+var ScreenHeight = $('body').height;
 
-var makeSquare = function(red,green,blue,height,width,radius,left,top) {
+console.log("ScreenWidth is " +ScreenWidth);
+console.log("ScreenHeight is " +ScreenHeight);
+
+
+var makeSquareCss = function(red,green,blue,width,height,radius,left,top) {
   return {
     background: "rgb(" +red+ "," +green+ "," +blue+ ")",
     height: height+ "px",
     width: width+ "px",
     borderRadius: radius+ "%",
-    position: "relative",
+    position: "absolute",
     left: left+ "%",
     top: top+ "%"
   }
 }
 
+
+
 var makeRandom = function(limit) {
   return Math.round(limit * Math.random());
 }
 
-for (i = 1; i < makeRandom(20); i++ ) {
-  squares.push(
-    makeSquare(makeRandom(255),makeRandom(255),makeRandom(255),makeRandom(200),makeRandom(200),makeRandom(100),makeRandom(100),makeRandom(100))
-  ) // Push into array
+for (i = 1; i < ( makeRandom(50)+50 ); i++ ) {
+  squareCss = makeSquareCss(
+    makeRandom(255), // red
+    makeRandom(255), // green
+    makeRandom(255), // blue
+    makeRandom(200), // width
+    makeRandom(200), // height
+    makeRandom(100), // border-radius
+    makeRandom(100), // left
+    makeRandom(100) // top
+  )
+  $('div.clone-me:last').clone().css(squareCss).appendTo('body');
 }
 
 var renderSquares = function(){
@@ -28,20 +45,7 @@ var renderSquares = function(){
   }
 }
 
-var myDiv = $.create("div");
 
-// Math.random()
-
-
-
-
-
-var ScreenWidth = $('body').width;
-var ScreenHeight = $('body').height;
-
-// Math.random()
-
-$('body').append("hello world");
 
 // How to style using objects:
 // ///////////////////////////
