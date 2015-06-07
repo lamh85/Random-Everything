@@ -1,5 +1,6 @@
-var duplicateDivs = [];
+var duplicateDivs;
 var excess;
+var counter = 1;
 
 // To simplify the Math.random syntax
 var makeRandom = function(limit) {
@@ -20,25 +21,37 @@ var makeSquareCssRandom = function() {
   }
 };
 
-var renderSquares = function(){
+var animateExisting = function(element){
+  element.animate( makeSquareCssRandom(),makeRandom(5000) );
+};
+
+var animateNew = function(){
   // Render the shapes
   for (i = 1; i < ( makeRandom(10)+20 ); i++ ) {
     $('div.clone-me:last').clone().css( makeSquareCssRandom() ).addClass('duplicate').removeClass('clone-me').animate(
-        makeSquareCssRandom(), makeRandom(5000) // Create random CSS and random duration, max 10 seconds
+        makeSquareCssRandom(), makeRandom(5000) // Create random CSS and random duration
       ).appendTo('body');
   }
   // Remove the excess
   duplicateDivs = $('.duplicate');
-  if ( duplicateDivs.length > 2000 ) {
-    excess = duplicateDivs.length - 2000;
+  if ( duplicateDivs.length > 500 ) {
+    excess = duplicateDivs.length - 500;
     for (i = 1; i < excess; i++) {
       duplicateDivs.eq(makeRandom(excess)).remove();
     }
   }
-  console.log("Number of shapes: " +duplicateDivs.length);
+
+  for (i = 1; i < (duplicateDivs.length/4); i++ ){
+    animateExisting(
+      duplicateDivs.eq(makeRandom( duplicateDivs.length/4 ))
+    )
+  }
+
+  console.log("Iteration number " +counter+ ". Number of shapes: " +duplicateDivs.length);
+  counter ++;
 };
 
 // Run for first time
-renderSquares();
+animateNew();
 
-setInterval(renderSquares,1000);
+setInterval(animateNew,1000);
