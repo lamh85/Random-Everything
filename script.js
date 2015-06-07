@@ -21,16 +21,18 @@ var makeSquareCssRandom = function() {
 };
 
 var renderSquares = function(){
+  // Render the shapes
   for (i = 1; i < ( makeRandom(10)+20 ); i++ ) {
     $('div.clone-me:last').clone().css( makeSquareCssRandom() ).addClass('duplicate').removeClass('clone-me').animate(
         makeSquareCssRandom(), makeRandom(5000) // Create random CSS and random duration, max 10 seconds
       ).appendTo('body');
   }
+  // Remove the excess
   duplicateDivs = $('.duplicate');
-  if ( duplicateDivs.length > 600  ) {
-    excess = duplicateDivs.length - 600;
+  if ( duplicateDivs.length > 2000 ) {
+    excess = duplicateDivs.length - 2000;
     for (i = 1; i < excess; i++) {
-      duplicateDivs.eq(makeRandom(30)).remove();
+      duplicateDivs.eq(makeRandom(excess)).remove();
     }
   }
   console.log("Number of shapes: " +duplicateDivs.length);
@@ -39,4 +41,4 @@ var renderSquares = function(){
 // Run for first time
 renderSquares();
 
-setInterval(renderSquares,2500);
+setInterval(renderSquares,1000);
