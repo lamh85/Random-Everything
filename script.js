@@ -1,38 +1,42 @@
-var makeSquareCss = function(red,green,blue,opacity,width,height,radius,rotate,left,top) {
-  return {
-    background: "rgb(" +red+ "," +green+ "," +blue+ ")",
-    opacity: opacity,
-    width: width+ "px",
-    height: height+ "px",
-    borderRadius: radius+ "%",
-    transform: "rotate(" +rotate+ "deg)",
-    position: "absolute",
-    left: left+ "%",
-    top: top+ "%"
-  }
-}
+var duplicateDivs = [];
+var excess;
 
+// To simplify the Math.random syntax
 var makeRandom = function(limit) {
   return Math.round(limit * Math.random());
-}
+};
 
-var makeSquareCssRandom =  function(){
-  return makeSquareCss(
-    makeRandom(255), // red
-    makeRandom(255), // green
-    makeRandom(255), // blue
-    Math.random(), // opacity
-    makeRandom(300), // width
-    makeRandom(300), // height
-    makeRandom(100), // border-radius
-    makeRandom(360), // rotate
-    makeRandom(100), // left
-    makeRandom(100) // top
-  );
-}
+var makeSquareCssRandom = function() {
+  return {
+    background: "rgb(" +makeRandom(255)+ "," +makeRandom(255)+ "," +makeRandom(255)+ ")",
+    opacity: Math.random,
+    width: makeRandom(300)+ "px",
+    height: makeRandom(300)+ "px",
+    borderRadius: makeRandom(100)+ "%",
+    transform: "rotate(" +makeRandom(180)+ "deg)",
+    position: "absolute",
+    left: makeRandom(95)+ "%",
+    top: makeRandom(95)+ "%"
+  }
+};
 
-for (i = 1; i < ( makeRandom(50)+50 ); i++ ) {
-  $('div.clone-me:last').clone().css( makeSquareCssRandom() ).addClass('duplicate').removeClass('clone-me').animate(
-      makeSquareCssRandom(), makeRandom(10000) // Create random CSS and random duration, max 10 seconds
-    ).appendTo('body');
-}
+var renderSquares = function(){
+  for (i = 1; i < ( makeRandom(10)+20 ); i++ ) {
+    $('div.clone-me:last').clone().css( makeSquareCssRandom() ).addClass('duplicate').removeClass('clone-me').animate(
+        makeSquareCssRandom(), makeRandom(5000) // Create random CSS and random duration, max 10 seconds
+      ).appendTo('body');
+  }
+  duplicateDivs = $('.duplicate');
+  if ( duplicateDivs.length > 600  ) {
+    excess = duplicateDivs.length - 600;
+    for (i = 1; i < excess; i++) {
+      duplicateDivs.eq(makeRandom(30)).remove();
+    }
+  }
+  console.log("Number of shapes: " +duplicateDivs.length);
+};
+
+// Run for first time
+renderSquares();
+
+setInterval(renderSquares,2500);
