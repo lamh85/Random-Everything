@@ -1,6 +1,7 @@
 var duplicateDivs;
 var excess;
 var counter = 1;
+var interval = 2000;
 
 // To simplify the Math.random syntax
 var makeRandom = function(limit) {
@@ -34,8 +35,8 @@ var animateNew = function(){
   }
   // Remove the excess
   duplicateDivs = $('.duplicate');
-  if ( duplicateDivs.length > 500 ) {
-    excess = duplicateDivs.length - 500;
+  if ( duplicateDivs.length > 1000 ) {
+    excess = duplicateDivs.length - 1000;
     for (i = 1; i < excess; i++) {
       duplicateDivs.eq(makeRandom(excess)).remove();
     }
@@ -54,4 +55,4 @@ var animateNew = function(){
 // Run for first time
 animateNew();
 
-setInterval(animateNew,1000);
+setInterval(animateNew, interval);
