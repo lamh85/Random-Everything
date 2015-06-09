@@ -11,7 +11,7 @@ var makeRandom = function(limit) {
 var makeSquareCssRandom = function() {
   return {
     background: "rgb(" +makeRandom(255)+ "," +makeRandom(255)+ "," +makeRandom(255)+ ")",
-    opacity: Math.random,
+    opacity: Math.random()*0.8,
     width: makeRandom(300)+ "px",
     height: makeRandom(300)+ "px",
     borderRadius: makeRandom(100)+ "%",
