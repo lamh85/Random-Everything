@@ -29,7 +29,7 @@ var animateExisting = function(element){
 var animateNew = function(){
   // Render the shapes
   for (i = 1; i < ( makeRandom(10)+20 ); i++ ) {
-    $('div.clone-me:last').clone().css( makeSquareCssRandom() ).addClass('duplicate').removeClass('clone-me').animate(
+    $('div.clone-me').clone().css( makeSquareCssRandom() ).addClass('duplicate').removeClass('clone-me').animate(
         makeSquareCssRandom(), makeRandom(5000) // Create random CSS and random duration
       ).appendTo('body');
   }
