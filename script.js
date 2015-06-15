@@ -1,19 +1,19 @@
 var duplicateDivs;
 var excess;
 var counter = 1;
-var interval = 2000;
 
-// To simplify the Math.random syntax
-var makeRandom = function(limit) {
-  return Math.round(limit * Math.random());
+// Use DRY principle on Math.random() method
+var makeRandom = function(range, floor) {
+  typeof floor == 'undefined' ? floor = 0 : floor = floor;
+  return floor + Math.round(range * Math.random());
 };
 
 var makeSquareCssRandom = function() {
   return {
     background: "rgb(" +makeRandom(255)+ "," +makeRandom(255)+ "," +makeRandom(255)+ ")",
     opacity: Math.random()*0.8,
-    width: makeRandom(300)+ "px",
-    height: makeRandom(300)+ "px",
+    width: makeRandom(250,50)+ "px",
+    height: makeRandom(250,50)+ "px",
     borderRadius: makeRandom(100)+ "%",
     transform: "rotate(" +makeRandom(180)+ "deg)",
     position: "absolute",
@@ -28,7 +28,7 @@ var animateExisting = function(element){
 
 var animateNew = function(){
   // Render the shapes
-  for (i = 1; i < ( makeRandom(10)+20 ); i++ ) {
+  for (i = 1; i < ( makeRandom(10,20) ); i++ ) {
     $('div.clone-me').clone().css( makeSquareCssRandom() ).addClass('duplicate').removeClass('clone-me').animate(
         makeSquareCssRandom(), makeRandom(5000) // Create random CSS and random duration
       ).appendTo('body');
@@ -55,4 +55,4 @@ var animateNew = function(){
 // Run for first time
 animateNew();
 
-setInterval(animateNew, interval);
+setInterval(animateNew, 2000);
