@@ -13,8 +13,8 @@ var makeSquareCssRandom = function() {
   return {
     background:     "rgb(" +makeRandom(255)+ "," +makeRandom(255)+ "," +makeRandom(255)+ ")",
     opacity:        Math.random() * 0.7 + 0.1,
-    width:          makeRandom(250,50)+ "px",
-    height:         makeRandom(250,50)+ "px",
+    width:          makeRandom( $('body').width() / 6 ), // Max value is 1/6 of <body> width
+    height:         makeRandom( $('body').width() / 6 ),
     borderRadius:   makeRandom(100)+ "%",
     transform:      "rotate(" +makeRandom(180)+ "deg)",
     position:       "absolute",
