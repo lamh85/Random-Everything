@@ -23,10 +23,6 @@ var makeSquareCssRandom = function() {
   }
 };
 
-var animateExisting = function(element){
-  element.animate( makeSquareCssRandom(),makeRandom(5000) );
-};
-
 var animateNew = function(){
   // Render the shapes
   for (i = 1; i < ( makeRandom(10,20) ); i++ ) {
@@ -44,9 +40,8 @@ var animateNew = function(){
   }
 
   for (i = 1; i < (duplicateDivs.length/4); i++ ){
-    animateExisting(
-      duplicateDivs.eq(makeRandom( duplicateDivs.length/4 ))
-    )
+    // Randomly choose an existing DIV and animate it
+    duplicateDivs.eq(makeRandom( duplicateDivs.length/4 )).animate( makeSquareCssRandom(),makeRandom(5000) )
   }
 
   console.log("Iteration number " +counter+ ". Number of shapes: " +duplicateDivs.length);
