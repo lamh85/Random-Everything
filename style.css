@@ -1,3 +1,9 @@
 body {
   position: relative;
 }
+
+#panel {
+  z-index: 1;
+  padding: 1em;
+  background: white;
+}

@@ -19,7 +19,8 @@ var makeSquareCssRandom = function() {
     transform:      "rotate(" +makeRandom(180)+ "deg)",
     position:       "absolute",
     left:           makeRandom(95)+ "%",
-    top:            makeRandom(95)+ "%"
+    top:            makeRandom(95)+ "%",
+    zIndex:         -1
   }
 };
 
