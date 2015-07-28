@@ -2,8 +2,53 @@ body {
   position: relative;
 }
 
-#panel {
+/* SIDE NAV BAR */
+/****************/
+
+#side-nav-modal {
+  color: white;
+  text-align: center;
+  background: none;
+  padding: 0px;
+  height: 100%;
+  position: fixed;
   z-index: 1;
+  right: -15em;
+  top: 0px;
+}
+
+#side-nav-bar {
+  float: right;
+  height: 100%;
+  background: #124c20;
+  overflow: scroll;
+  width: 15em;
+}
+
+#side-nav-bar .wrapper-link {
+  color: white;
   padding: 1em;
-  background: white;
+  background: #124c20;
+  font-family: 'Oswald', sans-serif;
+  font-size: 2em;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#side-nav-bar .wrapper-link:hover {
+  background: #2E723E;
+  text-decoration: none;
+}
+
+#side-nav-tab {
+  background: #124c20;
+  float: right;
+  font-size: 2em;
+  cursor: pointer;
+  padding: 0.455em;
+  border-bottom: 0.25em solid #437E49;
+  border-radius: 0.25em 0 0 0.25em;  
+}
+
+#side-nav-tab .glyphicon {
 }
