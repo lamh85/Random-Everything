@@ -5,7 +5,7 @@ var maximumShapes = 500;
 
 // Use DRY principle on Math.random() method
 var makeRandom = function(range, minimum) {
-  (typeof minimum == 'undefined') && (minimum = 0);
+  minimum = minimum || 0;
   return minimum + Math.round(range * Math.random());
 };
 
